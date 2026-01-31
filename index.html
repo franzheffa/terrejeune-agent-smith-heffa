@@ -395,4 +395,19 @@
         });
     </script>
 </body>
-</html>
+</html><script>
+async function envoyerAuSimulateur(message) {
+  const logDiv = document.querySelector(".text-green-500");
+  try {
+    const response = await fetch("/api/gemini", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ prompt: message })
+    });
+    const data = await response.json();
+    logDiv.innerText = data.candidates[0].content.parts[0].text;
+  } catch (err) {
+    logDiv.innerText = "[ERREUR] Impossible de joindre le noyau.";
+  }
+}
+</script>
