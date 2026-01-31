@@ -410,4 +410,33 @@ async function envoyerAuSimulateur(message) {
     logDiv.innerText = "[ERREUR] Impossible de joindre le noyau.";
   }
 }
+</script><script>
+document.addEventListener('DOMContentLoaded', () => {
+    const btn = document.querySelector('button');
+    const area = document.querySelector('textarea');
+    const log = document.querySelector('.terminal-box div') || document.querySelector('.text-green-500');
+
+    if (btn) {
+        btn.id = "btn-smith";
+        btn.onclick = async () => {
+            const prompt = area.value;
+            if(!prompt) return alert("Veuillez saisir une question.");
+            
+            log.innerText = "[INFÉRENCE EN COURS...] Connexion au noyau Gemini...";
+            
+            try {
+                const res = await fetch('/api/gemini', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ prompt: prompt })
+                });
+                const data = await res.json();
+                log.innerText = data.candidates[0].content.parts[0].text;
+            } catch (e) {
+                log.innerText = "[ERREUR] Le noyau ne répond pas. Vérifiez vos Logs Vercel.";
+                console.error(e);
+            }
+        };
+    }
+});
 </script>
