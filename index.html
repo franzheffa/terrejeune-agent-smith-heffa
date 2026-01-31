@@ -97,7 +97,7 @@
                         <textarea id="lab-input" placeholder="Décrivez un défi municipal (ex: Panne d'éclairage parc central)..." class="w-full bg-gray-800 border border-gray-700 rounded-xl p-4 text-sm text-gray-200 focus:outline-none focus:ring-2 focus:ring-orange-500 h-32"></textarea>
                         <div class="flex gap-4">
                             <button onclick="callGemini()" id="btn-analyze" class="flex-1 bg-orange-600 hover:bg-orange-700 text-white font-bold py-3 px-6 rounded-xl transition flex items-center justify-center gap-2 shadow-lg">
-                                <span>onclick="envoyerAuSimulateur(document.querySelector('textarea').value)" Lancer l'Inférence ✨</span>
+                                <span>Lancer l'Inférence ✨</span>
                             </button>
                             <button onclick="callTTS()" id="btn-tts" class="bg-blue-600 hover:bg-blue-700 text-white p-4 rounded-xl transition flex items-center justify-center shadow-lg" title="Parler">
                                 🔊
@@ -440,3 +440,4 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 </script>
+<script src="/smith-core.js"></script>
